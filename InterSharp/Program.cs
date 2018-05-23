@@ -22,10 +22,14 @@ namespace InterSharp
                 Console.Write(">");
                 currentCommand = Console.ReadLine();
                 command = currentCommand.Split(' ');
+                string[] vardata = new string[2];
+                vardata = currentCommand.Split('=');
+                
+                
                 switch (command[0])
                 {
                     case "string":
-                        strings[command[1]] = command[2];
+                        strings[command[1]] = vardata[1];
                         break;
                     case "number":
                         numbers[command[1]] = decimal.Parse(command[2]);

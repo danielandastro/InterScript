@@ -14,23 +14,26 @@
       <file leaf-file-name="Program.cs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/InterSharp/Program.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="411">
-              <caret line="59" column="13" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
+            <state relative-caret-position="372">
+              <caret line="50" column="25" lean-forward="true" selection-start-line="50" selection-start-column="25" selection-end-line="50" selection-end-column="25" />
               <folding>
-                <marker date="1527075326234" expanded="true" signature="6:164" ph="..." />
-                <marker date="1527075326234" expanded="true" signature="186:2338" ph="{...}" />
-                <marker date="1527075326234" expanded="true" signature="215:2336" ph="{...}" />
-                <marker date="1527075326234" expanded="true" signature="268:2330" ph="{...}" />
-                <marker date="1527075326234" expanded="true" signature="637:2320" ph="{...}" />
-                <marker date="1527075326234" expanded="true" signature="829:2306" ph="{...}" />
-                <marker date="1527075326234" expanded="true" signature="1534:1758" ph="{...}" />
-                <marker date="1527075326234" expanded="true" signature="1820:2044" ph="{...}" />
+                <marker date="1527116312614" expanded="false" signature="6:164" ph="..." />
+                <marker date="1527116312614" expanded="true" signature="186:2475" ph="{...}" />
+                <marker date="1527116312614" expanded="true" signature="215:2473" ph="{...}" />
+                <marker date="1527116312614" expanded="true" signature="268:2467" ph="{...}" />
+                <marker date="1527116312614" expanded="true" signature="637:2457" ph="{...}" />
+                <marker date="1527116312614" expanded="true" signature="966:2443" ph="{...}" />
+                <marker date="1527116312614" expanded="true" signature="1671:1895" ph="{...}" />
+                <marker date="1527116312614" expanded="true" signature="1957:2181" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/InterSharp/Program.cs" root0="FORCE_HIGHLIGHTING" />
@@ -48,18 +51,18 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="20" />
     <option name="y" value="43" />
     <option name="width" value="1400" />
     <option name="height" value="837" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="SolutionExplorer" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="SolutionExplorer">
         <subPane>
           <expand>
@@ -73,6 +76,7 @@
         <option name="show-file-system" value="false" />
         <option name="show-all-items" value="false" />
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -118,12 +122,13 @@
       <option name="presentableId" value="Default" />
       <updated>1526981338383</updated>
       <workItem from="1526981342418" duration="605000" />
-      <workItem from="1527071027095" duration="2567000" />
+      <workItem from="1527071027095" duration="2896000" />
+      <workItem from="1527116083001" duration="487000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3172000" />
+    <option name="totallyTimeSpent" value="3758000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -135,7 +140,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="20" y="43" width="1400" height="837" extended-state="0" />
+    <frame x="0" y="23" width="1440" height="877" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32972974" />
@@ -143,11 +148,11 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Unit Tests" order="7" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32972974" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.31282052" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="NuGet" order="7" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2533137" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24964234" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.32972974" />
       <window_info anchor="right" id="Database" order="3" />
@@ -173,34 +178,51 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/InterSharp/Program.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="9" lean-forward="true" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
+        <state relative-caret-position="885">
+          <caret line="59" column="13" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
           <folding>
-            <marker date="1527075326234" expanded="true" signature="6:164" ph="..." />
-            <marker date="1527075326234" expanded="true" signature="186:2338" ph="{...}" />
-            <marker date="1527075326234" expanded="true" signature="215:2336" ph="{...}" />
-            <marker date="1527075326234" expanded="true" signature="268:2330" ph="{...}" />
-            <marker date="1527075326234" expanded="true" signature="637:2320" ph="{...}" />
-            <marker date="1527075326234" expanded="true" signature="829:2306" ph="{...}" />
-            <marker date="1527075326234" expanded="true" signature="1534:1758" ph="{...}" />
-            <marker date="1527075326234" expanded="true" signature="1820:2044" ph="{...}" />
+            <marker date="1527116312614" expanded="false" signature="6:164" ph="..." />
+            <marker date="1527116312614" expanded="true" signature="186:2475" ph="{...}" />
+            <marker date="1527116312614" expanded="true" signature="215:2473" ph="{...}" />
+            <marker date="1527116312614" expanded="true" signature="268:2467" ph="{...}" />
+            <marker date="1527116312614" expanded="true" signature="637:2457" ph="{...}" />
+            <marker date="1527116312614" expanded="true" signature="966:2443" ph="{...}" />
+            <marker date="1527116312614" expanded="true" signature="1671:1895" ph="{...}" />
+            <marker date="1527116312614" expanded="true" signature="1957:2181" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/InterSharp/Program.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="59" column="13" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
+        <state relative-caret-position="195">
+          <caret line="13" column="9" lean-forward="true" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
           <folding>
-            <marker date="1527075326234" expanded="true" signature="6:164" ph="..." />
-            <marker date="1527075326234" expanded="true" signature="186:2338" ph="{...}" />
-            <marker date="1527075326234" expanded="true" signature="215:2336" ph="{...}" />
-            <marker date="1527075326234" expanded="true" signature="268:2330" ph="{...}" />
-            <marker date="1527075326234" expanded="true" signature="637:2320" ph="{...}" />
-            <marker date="1527075326234" expanded="true" signature="829:2306" ph="{...}" />
-            <marker date="1527075326234" expanded="true" signature="1534:1758" ph="{...}" />
-            <marker date="1527075326234" expanded="true" signature="1820:2044" ph="{...}" />
+            <marker date="1527116312614" expanded="false" signature="6:164" ph="..." />
+            <marker date="1527116312614" expanded="true" signature="186:2475" ph="{...}" />
+            <marker date="1527116312614" expanded="true" signature="215:2473" ph="{...}" />
+            <marker date="1527116312614" expanded="true" signature="268:2467" ph="{...}" />
+            <marker date="1527116312614" expanded="true" signature="637:2457" ph="{...}" />
+            <marker date="1527116312614" expanded="true" signature="966:2443" ph="{...}" />
+            <marker date="1527116312614" expanded="true" signature="1671:1895" ph="{...}" />
+            <marker date="1527116312614" expanded="true" signature="1957:2181" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/InterSharp/Program.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="50" column="25" lean-forward="true" selection-start-line="50" selection-start-column="25" selection-end-line="50" selection-end-column="25" />
+          <folding>
+            <marker date="1527116312614" expanded="false" signature="6:164" ph="..." />
+            <marker date="1527116312614" expanded="true" signature="186:2475" ph="{...}" />
+            <marker date="1527116312614" expanded="true" signature="215:2473" ph="{...}" />
+            <marker date="1527116312614" expanded="true" signature="268:2467" ph="{...}" />
+            <marker date="1527116312614" expanded="true" signature="637:2457" ph="{...}" />
+            <marker date="1527116312614" expanded="true" signature="966:2443" ph="{...}" />
+            <marker date="1527116312614" expanded="true" signature="1671:1895" ph="{...}" />
+            <marker date="1527116312614" expanded="true" signature="1957:2181" ph="{...}" />
           </folding>
         </state>
       </provider>
