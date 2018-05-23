@@ -1,3 +1,3 @@
 # InterSharp
 
-## A scripting language that aims to fill the gap of a truly interactive C# environment. 
+## A language that aims to learn from the mistakes of C#.
