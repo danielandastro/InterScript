@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5da185df-0957-409f-992e-9aaa90d33280" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/InterSharp/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterSharp/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.InterSharp/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InterSharp/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.InterSharp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InterSharp/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterSharp.sln" beforeDir="false" afterPath="$PROJECT_DIR$/InterSharp.sln" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InterSharp/bin/Debug/InterSharp.exe" beforeDir="false" afterPath="$PROJECT_DIR$/InterSharp/bin/Debug/InterSharp.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InterSharp/bin/Debug/InterSharp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/InterSharp/bin/Debug/InterSharp.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InterSharp/obj/Debug/InterSharp.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/InterSharp/obj/Debug/InterSharp.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InterSharp/obj/Debug/InterSharp.exe" beforeDir="false" afterPath="$PROJECT_DIR$/InterSharp/obj/Debug/InterSharp.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InterSharp/obj/Debug/InterSharp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/InterSharp/obj/Debug/InterSharp.pdb" afterDir="false" />
     </list>
@@ -18,20 +19,45 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Program.cs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Program.cs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/InterSharp/Program.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="41" column="90" lean-forward="true" selection-start-line="41" selection-start-column="90" selection-end-line="41" selection-end-column="90" />
+            <state relative-caret-position="45">
+              <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="33" />
               <folding>
-                <marker date="1527141263470" expanded="false" signature="6:164" ph="..." />
-                <marker date="1527141263470" expanded="true" signature="186:2550" ph="{...}" />
-                <marker date="1527141263470" expanded="true" signature="215:2548" ph="{...}" />
-                <marker date="1527141263470" expanded="true" signature="268:2542" ph="{...}" />
-                <marker date="1527141263470" expanded="true" signature="637:2532" ph="{...}" />
-                <marker date="1527141263470" expanded="true" signature="1039:2518" ph="{...}" />
-                <marker date="1527141263470" expanded="true" signature="1746:1970" ph="{...}" />
-                <marker date="1527141263470" expanded="true" signature="2032:2256" ph="{...}" />
+                <marker date="1527141327069" expanded="true" signature="6:164" ph="..." />
+                <marker date="1527141327069" expanded="true" signature="186:2503" ph="{...}" />
+                <marker date="1527141327069" expanded="true" signature="215:2501" ph="{...}" />
+                <marker date="1527141327069" expanded="true" signature="268:2495" ph="{...}" />
+                <marker date="1527141327069" expanded="true" signature="637:2485" ph="{...}" />
+                <marker date="1527141327069" expanded="true" signature="1039:2471" ph="{...}" />
+                <marker date="1527141327069" expanded="true" signature="1699:1923" ph="{...}" />
+                <marker date="1527141327069" expanded="true" signature="1985:2209" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Program.cs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Interpreter/Program.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="20" column="12" lean-forward="true" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
+              <folding>
+                <marker date="1527161591965" expanded="true" signature="6:90" ph="..." />
+                <marker date="1527161591965" expanded="true" signature="113:3183" ph="{...}" />
+                <marker date="1527161591965" expanded="true" signature="133:3181" ph="{...}" />
+                <marker date="1527161591965" expanded="true" signature="179:3175" ph="{...}" />
+                <marker date="1527161591965" expanded="true" signature="809:3165" ph="{...}" />
+                <marker date="1527161591965" expanded="true" signature="1161:3120" ph="{...}" />
+                <marker date="1527161591965" expanded="true" signature="1624:1731" ph="{...}" />
+                <marker date="1527161591965" expanded="true" signature="1773:1825" ph="{...}" />
+                <marker date="1527161591965" expanded="true" signature="1951:2356" ph="{...}" />
+                <marker date="1527161591965" expanded="true" signature="2009:2141" ph="{...}" />
+                <marker date="1527161591965" expanded="true" signature="2187:2330" ph="{...}" />
+                <marker date="1527161591965" expanded="true" signature="2418:2823" ph="{...}" />
+                <marker date="1527161591965" expanded="true" signature="2476:2608" ph="{...}" />
+                <marker date="1527161591965" expanded="true" signature="2654:2797" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -44,11 +70,13 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/InterSharp/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Interpreter/Program.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/InterSharp/Program.cs" />
+        <option value="$PROJECT_DIR$/Interpreter/Program.cs" />
       </list>
     </option>
   </component>
@@ -75,7 +103,12 @@
           <expand>
             <path>
               <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
-              <item name="InterSharp (1 project)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="InterSharp (2 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="InterSharp (2 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Interpreter" type="977d5f41:SolutionExplorerNodeRider" />
             </path>
           </expand>
           <select />
@@ -102,7 +135,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected=".NET Project.Interpreter">
     <configuration name="Default" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="$PROJECT_DIR$/InterSharp/bin/Debug/InterSharp.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -117,6 +150,29 @@
       <option name="PROJECT_KIND" value="Console" />
       <option name="PROJECT_TFM" value=".NETFramework,Version=v4.7.1" />
     </configuration>
+    <configuration name="Interpreter" type="DotNetProject" factoryName=".NET Project" temporary="true">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Interpreter/bin/Debug/netcoreapp2.0/Interpreter.dll" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Interpreter" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/Interpreter/Interpreter.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value=".NETCoreApp,Version=v2.0" />
+    </configuration>
+    <list>
+      <item itemvalue=".NET Project.Default" />
+      <item itemvalue=".NET Project.Interpreter" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue=".NET Project.Interpreter" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -130,12 +186,12 @@
       <updated>1526981338383</updated>
       <workItem from="1526981342418" duration="605000" />
       <workItem from="1527071027095" duration="2896000" />
-      <workItem from="1527116083001" duration="1045000" />
+      <workItem from="1527116083001" duration="2364000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4546000" />
+    <option name="totallyTimeSpent" value="5865000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -148,18 +204,17 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32972974" />
       <window_info anchor="right" id="Errors In Solution" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Unit Tests" order="7" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.31282052" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.31282052" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="NuGet" order="7" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24964234" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24964234" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.32972974" />
       <window_info anchor="right" id="Database" order="3" />
@@ -188,14 +243,14 @@
         <state relative-caret-position="885">
           <caret line="59" column="13" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
           <folding>
-            <marker date="1527141263470" expanded="false" signature="6:164" ph="..." />
-            <marker date="1527141263470" expanded="true" signature="186:2550" ph="{...}" />
-            <marker date="1527141263470" expanded="true" signature="215:2548" ph="{...}" />
-            <marker date="1527141263470" expanded="true" signature="268:2542" ph="{...}" />
-            <marker date="1527141263470" expanded="true" signature="637:2532" ph="{...}" />
-            <marker date="1527141263470" expanded="true" signature="1039:2518" ph="{...}" />
-            <marker date="1527141263470" expanded="true" signature="1746:1970" ph="{...}" />
-            <marker date="1527141263470" expanded="true" signature="2032:2256" ph="{...}" />
+            <marker date="1527141327069" expanded="true" signature="6:164" ph="..." />
+            <marker date="1527141327069" expanded="true" signature="186:2503" ph="{...}" />
+            <marker date="1527141327069" expanded="true" signature="215:2501" ph="{...}" />
+            <marker date="1527141327069" expanded="true" signature="268:2495" ph="{...}" />
+            <marker date="1527141327069" expanded="true" signature="637:2485" ph="{...}" />
+            <marker date="1527141327069" expanded="true" signature="1039:2471" ph="{...}" />
+            <marker date="1527141327069" expanded="true" signature="1699:1923" ph="{...}" />
+            <marker date="1527141327069" expanded="true" signature="1985:2209" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -205,31 +260,54 @@
         <state relative-caret-position="195">
           <caret line="13" column="9" lean-forward="true" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
           <folding>
-            <marker date="1527141263470" expanded="false" signature="6:164" ph="..." />
-            <marker date="1527141263470" expanded="true" signature="186:2550" ph="{...}" />
-            <marker date="1527141263470" expanded="true" signature="215:2548" ph="{...}" />
-            <marker date="1527141263470" expanded="true" signature="268:2542" ph="{...}" />
-            <marker date="1527141263470" expanded="true" signature="637:2532" ph="{...}" />
-            <marker date="1527141263470" expanded="true" signature="1039:2518" ph="{...}" />
-            <marker date="1527141263470" expanded="true" signature="1746:1970" ph="{...}" />
-            <marker date="1527141263470" expanded="true" signature="2032:2256" ph="{...}" />
+            <marker date="1527141327069" expanded="true" signature="6:164" ph="..." />
+            <marker date="1527141327069" expanded="true" signature="186:2503" ph="{...}" />
+            <marker date="1527141327069" expanded="true" signature="215:2501" ph="{...}" />
+            <marker date="1527141327069" expanded="true" signature="268:2495" ph="{...}" />
+            <marker date="1527141327069" expanded="true" signature="637:2485" ph="{...}" />
+            <marker date="1527141327069" expanded="true" signature="1039:2471" ph="{...}" />
+            <marker date="1527141327069" expanded="true" signature="1699:1923" ph="{...}" />
+            <marker date="1527141327069" expanded="true" signature="1985:2209" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/InterSharp/Program.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="41" column="90" lean-forward="true" selection-start-line="41" selection-start-column="90" selection-end-line="41" selection-end-column="90" />
+        <state relative-caret-position="45">
+          <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="33" />
           <folding>
-            <marker date="1527141263470" expanded="false" signature="6:164" ph="..." />
-            <marker date="1527141263470" expanded="true" signature="186:2550" ph="{...}" />
-            <marker date="1527141263470" expanded="true" signature="215:2548" ph="{...}" />
-            <marker date="1527141263470" expanded="true" signature="268:2542" ph="{...}" />
-            <marker date="1527141263470" expanded="true" signature="637:2532" ph="{...}" />
-            <marker date="1527141263470" expanded="true" signature="1039:2518" ph="{...}" />
-            <marker date="1527141263470" expanded="true" signature="1746:1970" ph="{...}" />
-            <marker date="1527141263470" expanded="true" signature="2032:2256" ph="{...}" />
+            <marker date="1527141327069" expanded="true" signature="6:164" ph="..." />
+            <marker date="1527141327069" expanded="true" signature="186:2503" ph="{...}" />
+            <marker date="1527141327069" expanded="true" signature="215:2501" ph="{...}" />
+            <marker date="1527141327069" expanded="true" signature="268:2495" ph="{...}" />
+            <marker date="1527141327069" expanded="true" signature="637:2485" ph="{...}" />
+            <marker date="1527141327069" expanded="true" signature="1039:2471" ph="{...}" />
+            <marker date="1527141327069" expanded="true" signature="1699:1923" ph="{...}" />
+            <marker date="1527141327069" expanded="true" signature="1985:2209" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Interpreter/Program.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="12" lean-forward="true" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
+          <folding>
+            <marker date="1527161591965" expanded="true" signature="6:90" ph="..." />
+            <marker date="1527161591965" expanded="true" signature="113:3183" ph="{...}" />
+            <marker date="1527161591965" expanded="true" signature="133:3181" ph="{...}" />
+            <marker date="1527161591965" expanded="true" signature="179:3175" ph="{...}" />
+            <marker date="1527161591965" expanded="true" signature="809:3165" ph="{...}" />
+            <marker date="1527161591965" expanded="true" signature="1161:3120" ph="{...}" />
+            <marker date="1527161591965" expanded="true" signature="1624:1731" ph="{...}" />
+            <marker date="1527161591965" expanded="true" signature="1773:1825" ph="{...}" />
+            <marker date="1527161591965" expanded="true" signature="1951:2356" ph="{...}" />
+            <marker date="1527161591965" expanded="true" signature="2009:2141" ph="{...}" />
+            <marker date="1527161591965" expanded="true" signature="2187:2330" ph="{...}" />
+            <marker date="1527161591965" expanded="true" signature="2418:2823" ph="{...}" />
+            <marker date="1527161591965" expanded="true" signature="2476:2608" ph="{...}" />
+            <marker date="1527161591965" expanded="true" signature="2654:2797" ph="{...}" />
           </folding>
         </state>
       </provider>
