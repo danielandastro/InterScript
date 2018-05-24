@@ -18,17 +18,25 @@ namespace Interpreter
             int counter = 0;
             Console.Write("Enter file name or path: ");
             var filepath = Console.ReadLine();
-            StreamReader file =
-                new StreamReader(@filepath);
+            StreamReader file;
+            try
+            {
+                file =
+                    new StreamReader(@filepath);
+            }
+            catch (FileNotFoundException)
+            {
+                Console.WriteLine("File not found...");
+                return;
+            }
+
             string line;
             while ((line = file.ReadLine()) != null)
             {
                 currentCommand = line;
                 command = currentCommand.Split(' ');
-                string[] vardata = new string[2];
-                vardata = currentCommand.Split('=');
-                string[] printData = new string[2];
-                printData = currentCommand.Split('(');
+                var vardata = currentCommand.Split('=');
+                var printData = currentCommand.Split('(');
                 switch (command[0])
                 {
                     case "string":
@@ -42,36 +50,25 @@ namespace Interpreter
                         break;
                     case "run":
                         try
-                        {
-                            Process.Start(command[1]);
-                        }
+                        {Process.Start(command[1]);}
                         catch (Exception)
-                        {
-                        }
+                        {Console.WriteLine("Script not present...");}
 
                         break;
                     case "retrieve":
                         if (command[1].Equals("number"))
                         {
                             try
-                            {
-                                Console.WriteLine(numbers[command[2]]);
-                            }
+                            {Console.WriteLine(numbers[command[2]]);}
                             catch (Exception)
-                            {
-                                Console.WriteLine("Error: Value not initialised");
-                            }
+                            {Console.WriteLine("Error: Value not initialised");}
                         }
                         else if (command[1].Equals("string"))
                         {
                             try
-                            {
-                                Console.WriteLine(strings[command[2]]);
-                            }
+                            {Console.WriteLine(strings[command[2]]);}
                             catch (Exception)
-                            {
-                                Console.WriteLine("Error: Value not initialised");
-                            }
+                            {Console.WriteLine("Error: Value not initialised");}
                         }
 
                         break;
