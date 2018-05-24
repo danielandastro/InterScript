@@ -10,6 +10,6 @@ We are looking for bug fixes and feature implementations based on existing cards
 When submitting a pull request please include a description of what you have changed and what you are attempting to fix or implement
 
 ### In your code
-Make sure you do not have redundant declarations, snippets of "using" statements, feel free to use any packages or namespaces, but if these are not exisiting DOTNET namespaces please include their functionality with your pull request
+Make sure you do not have redundant declarations, snippets or "using" statements, feel free to use any packages or namespaces, but if these are not exisiting DOTNET namespaces please include their functionality with your pull request
 
 ## Once again thank you for contributing to the development of InterSharp
