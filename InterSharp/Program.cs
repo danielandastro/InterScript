@@ -24,22 +24,22 @@ namespace InterSharp
                 command = currentCommand.Split(' ');
                 string[] vardata = new string[2];
                 vardata = currentCommand.Split('=');
-                
-                
+                string[] printData = new string[2];
+                printData = currentCommand.Split('(');
                 switch (command[0])
                 {
                     case "string":
                         strings[command[1]] = vardata[1];
                         break;
                     case "number":
-                        numbers[command[1]] = decimal.Parse(command[2]);
+                        numbers[command[1]] = decimal.Parse(vardata[1]);
                         break;
                     case "print":
-                        Console.WriteLine(command[1]);
+                        Console.WriteLine(printData[1]);
                         break;
                     case "run":
                         try{Process.Start(command[1]);}
-                        catch (Exception){/*Console.WriteLine("Error: File not found");*/}
+                        catch (Exception){}
                         break;
                     case "retrieve":
                         if (command[1].Equals("number"))
