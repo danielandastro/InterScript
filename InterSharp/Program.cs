@@ -15,17 +15,16 @@ namespace InterSharp
             Dictionary<string, decimal> numbers = new Dictionary<string, decimal>();
             strings["run"] = "run";
             Console.WriteLine(strings["run"]);
-            var command = new string[10]; 
-            string currentCommand = "";
             while (true)
             {
                 Console.Write(">");
-                currentCommand = Console.ReadLine();
-                command = currentCommand.Split(' ');
-                string[] vardata = new string[2];
-                vardata = currentCommand.Split('=');
-                string[] printData = new string[2];
-                printData = currentCommand.Split('(');
+                var currentCommand = Console.ReadLine();
+                if (currentCommand == null)
+                    continue;
+                
+                var command = currentCommand.Split(' ');
+                var vardata = currentCommand.Split('=');
+                var printData = currentCommand.Split('(');
                 switch (command[0])
                 {
                     case "string":
