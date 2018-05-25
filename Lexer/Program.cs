@@ -61,7 +61,7 @@ namespace Lexer
                 {
                     lexerReturn += "{varid " + split[1] + "}";
                 }*/
-                if ( dataTypes.Contains(s) &!(vardata[1].Equals("")))
+                if ( dataTypes.Contains(s) && command.Contains("="))
                 {
                     lexerReturn += $"{{datatype {s.Trim()}}} ";
                     lexerReturn += "{vardata " + vardata[1] + "}";
