@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterSharpNETCore", "InterS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lexer", "Lexer\Lexer.csproj", "{0B18B21F-FD51-43E1-AFFD-FA842D6D1964}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LexerParser", "LexerParser\LexerParser.csproj", "{4114EF15-ABA9-456C-9E77-32139BBB0CC0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{0B18B21F-FD51-43E1-AFFD-FA842D6D1964}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B18B21F-FD51-43E1-AFFD-FA842D6D1964}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B18B21F-FD51-43E1-AFFD-FA842D6D1964}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4114EF15-ABA9-456C-9E77-32139BBB0CC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4114EF15-ABA9-456C-9E77-32139BBB0CC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4114EF15-ABA9-456C-9E77-32139BBB0CC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4114EF15-ABA9-456C-9E77-32139BBB0CC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

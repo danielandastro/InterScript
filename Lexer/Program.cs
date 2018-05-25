@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Lexer
 {
@@ -10,6 +11,7 @@ namespace Lexer
             Console.WriteLine(Lexer("string[] x = new nig"));
 
             Console.ReadKey();
+            Console.WriteLine(Lexer("string x = dog"));
         }
 
         static string Lexer(string command)
