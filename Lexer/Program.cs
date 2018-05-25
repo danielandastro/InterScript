@@ -12,6 +12,7 @@ namespace Lexer
 
             Console.ReadKey();
             Console.WriteLine(Lexer("string x = dog"));
+            Console.WriteLine(Lexer("retrieve string dog"));
         }
 
         static string Lexer(string command)
@@ -37,16 +38,28 @@ namespace Lexer
 
             var split = command.Split(' ');
             var lexerReturn = "";
+            var vardata = command.Split('=');
             foreach (string s in split)
+                
             {
                 if (dataTypes.Contains(s))
+                {
                     lexerReturn += $"{{datatype {s.Trim()}}} ";
+                    lexerReturn += "{vardata " + vardata[1] + "}";
+                }
+                
+                
                 else if (commands.Contains(s))
                     lexerReturn += $"{{command {s.Trim()}}} ";
                 else if (operators.Contains(s))
                     lexerReturn += $"{{operator {s.Trim()}}} ";
                 else if (classes.Contains(s))
                     lexerReturn += $"{{class {s.Trim()}}} ";
+
+                if ((dataTypes.Contains(s)) && (commands.Contains(s) == false))
+                {
+                    lexerReturn += "{varid " + split[1] + "}";
+                }
             }
 
             return lexerReturn;
