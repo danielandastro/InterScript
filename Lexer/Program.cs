@@ -20,6 +20,7 @@ namespace Lexer
             {
                 "+","-","/","*","**"
             };
+
             var commands = new[]
             {
                 "print","retrieve","run","clear","exit"
@@ -38,9 +39,7 @@ namespace Lexer
 
             var split = command.Split(' ');
             var lexerReturn = "";
-            string[] vardata = new string[2];
-            vardata[1] = "";
-            vardata = command.Split('=');
+            var varDetails = command.Split('=');
             foreach (string s in split)
                 
             {
@@ -62,15 +61,17 @@ namespace Lexer
                 {
                     lexerReturn += "{varid " + split[1] + "}";
                 }*/
-                if ( dataTypes.Contains(s) && command.Contains("="))
+                if (dataTypes.Contains(s) && command.Contains("=")) //check for assignment
                 {
                     lexerReturn += $"{{datatype {s.Trim()}}} ";
-                    lexerReturn += "{vardata" + vardata[1] + "}";
+                    lexerReturn += $"{{varId {varDetails[0].Split(' ')[1]}}} ";
+                    lexerReturn += "{vardata" + varDetails[1] + "}";
                 }
                 else if (commands.Contains(s))
                 { 
                     lexerReturn += $"{{command {s.Trim()}}} ";
-                    lexerReturn += "{varid " + split[2] + "}";
+                    //lexerReturn += $"{{commandArgumentDatatype {}}}"
+                    lexerReturn += "{commandArgument " + split[2] + "}";
                     
                 }
 
