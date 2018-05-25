@@ -8,8 +8,9 @@ namespace Lexer
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Lexer("string[] x = new nig"));
+            Console.WriteLine(Lexer("string[] x = new class()"));
             Console.WriteLine(Lexer("string x = dog"));
+            Console.WriteLine(Lexer("int[] get = new class()"));
             Console.WriteLine(Lexer("retrieve string x"));
             Console.ReadKey();
         }
