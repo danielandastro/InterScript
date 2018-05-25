@@ -1,6 +1,0 @@
-/Users/danielshroff/RiderProjects/InterSharp/InterSharp/bin/Debug/InterSharp.exe
-/Users/danielshroff/RiderProjects/InterSharp/InterSharp/bin/Debug/InterSharp.pdb
-/Users/danielshroff/RiderProjects/InterSharp/InterSharp/obj/Debug/InterSharp.csprojResolveAssemblyReference.cache
-/Users/danielshroff/RiderProjects/InterSharp/InterSharp/obj/Debug/InterSharp.csproj.CoreCompileInputs.cache
-/Users/danielshroff/RiderProjects/InterSharp/InterSharp/obj/Debug/InterSharp.exe
-/Users/danielshroff/RiderProjects/InterSharp/InterSharp/obj/Debug/InterSharp.pdb
