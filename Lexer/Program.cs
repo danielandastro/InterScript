@@ -38,11 +38,13 @@ namespace Lexer
 
             var split = command.Split(' ');
             var lexerReturn = "";
-            var vardata = command.Split('=');
+            string[] vardata = new string[2];
+            vardata[1] = "";
+            vardata = command.Split('=');
             foreach (string s in split)
                 
             {
-                if (dataTypes.Contains(s))
+                /*if (dataTypes.Contains(s))
                 {
                     lexerReturn += $"{{datatype {s.Trim()}}} ";
                     lexerReturn += "{vardata " + vardata[1] + "}";
@@ -59,7 +61,21 @@ namespace Lexer
                 if ((dataTypes.Contains(s)) && (commands.Contains(s) == false))
                 {
                     lexerReturn += "{varid " + split[1] + "}";
+                }*/
+                if ( dataTypes.Contains(s) &!(vardata[1].Equals("")))
+                {
+                    lexerReturn += $"{{datatype {s.Trim()}}} ";
+                    lexerReturn += "{vardata " + vardata[1] + "}";
                 }
+                else if (commands.Contains(s))
+                {
+                    
+                    lexerReturn += $"{{datatype {s.Trim()}}} ";
+                    lexerReturn += $"{{command {s.Trim()}}} ";
+                    lexerReturn += "{varid " + split[2] + "}";
+                    
+                }
+
             }
 
             return lexerReturn;
