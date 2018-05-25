@@ -9,10 +9,9 @@ namespace Lexer
         static void Main(string[] args)
         {
             Console.WriteLine(Lexer("string[] x = new nig"));
-
-            Console.ReadKey();
             Console.WriteLine(Lexer("string x = dog"));
             Console.WriteLine(Lexer("retrieve string dog"));
+            Console.ReadKey();
         }
 
         static string Lexer(string command)
