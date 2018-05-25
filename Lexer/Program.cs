@@ -10,7 +10,7 @@ namespace Lexer
         {
             Console.WriteLine(Lexer("string[] x = new nig"));
             Console.WriteLine(Lexer("string x = dog"));
-            Console.WriteLine(Lexer("retrieve string dog"));
+            Console.WriteLine(Lexer("retrieve string x"));
             Console.ReadKey();
         }
 
@@ -27,12 +27,13 @@ namespace Lexer
 
             var dataTypes = new[]
             {
-                "string", "int", "new"
+                "string", "int", "string[]", "int[]"
             };
 
             var classes = new[]
             {
-                "string","int","string[]","int[]"
+                ""
+                //ToDo: Populate this with class instances
             };
 
             var split = command.Split(' ');
@@ -64,12 +65,10 @@ namespace Lexer
                 if ( dataTypes.Contains(s) && command.Contains("="))
                 {
                     lexerReturn += $"{{datatype {s.Trim()}}} ";
-                    lexerReturn += "{vardata " + vardata[1] + "}";
+                    lexerReturn += "{vardata" + vardata[1] + "}";
                 }
                 else if (commands.Contains(s))
-                {
-                    
-                    lexerReturn += $"{{datatype {s.Trim()}}} ";
+                { 
                     lexerReturn += $"{{command {s.Trim()}}} ";
                     lexerReturn += "{varid " + split[2] + "}";
                     
