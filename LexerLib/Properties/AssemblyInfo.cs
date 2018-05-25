@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("LexerParser")]
+[assembly: AssemblyTitle("LexerLib")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("LexerParser")]
+[assembly: AssemblyProduct("LexerLib")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("4114EF15-ABA9-456C-9E77-32139BBB0CC0")]
+[assembly: Guid("96E4E7CD-DEE1-4277-9D3B-BE06DC820CBB")]
 
 // Version information for an assembly consists of the following four values:
 //
