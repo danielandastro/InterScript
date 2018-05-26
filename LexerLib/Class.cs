@@ -40,11 +40,18 @@ namespace LexerLib
                     lexerReturn += $"{{varId {varDetails[0].Split(' ')[1]}}} ";
                     lexerReturn += "{vardata" + varDetails[1] + "}";
                 }
+
+                else if(dataTypes.Contains(s))
+                {
+                    lexerReturn += $"{{datatype {s.Trim()}}}";
+                    lexerReturn += $"{{varId {varDetails[0].Split(' ')[1]}}}";
+                }
+
                 else if (commands.Contains(s))
                 { 
                     lexerReturn += $"{{command {s.Trim()}}} ";
                     //lexerReturn += $"{{commandArgumentDatatype {}}}"
-                    lexerReturn += "{commandArgument " + split[2] + "}";
+                    lexerReturn += "{commandArgument " + split[1] + "}";
                     
                 }
 
