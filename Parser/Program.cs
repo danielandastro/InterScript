@@ -47,6 +47,9 @@ namespace Parser
             }
             reRecompile = reRecompile.Where(s => !string.IsNullOrEmpty(s)).ToArray();
 
+            foreach (var s in reRecompile)
+                Console.Write(s + " ");
+            
             Console.ReadKey();
         }
     }
