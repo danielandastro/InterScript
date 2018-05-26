@@ -31,9 +31,7 @@ namespace LexerLib
             var lexerReturn = "";
             var varDetails = command.Split('=');
             foreach (string s in split)
-                
             {
-                
                 if (dataTypes.Contains(s) && command.Contains("=")) //check for assignment
                 {
                     lexerReturn += $"{{datatype {s.Trim()}}} ";
@@ -51,8 +49,9 @@ namespace LexerLib
                 { 
                     lexerReturn += $"{{command {s.Trim()}}} ";
                     //lexerReturn += $"{{commandArgumentDatatype {}}}"
-                    lexerReturn += $"{{commandArgument {split[1]}}}";
-                    
+                    try{lexerReturn += $"{{commandArgument {split[1]}}}";}
+                    catch{continue;}
+
                 }
 
             }
