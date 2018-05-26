@@ -38,7 +38,7 @@ namespace LexerLib
                 {
                     lexerReturn += $"{{datatype {s.Trim()}}} ";
                     lexerReturn += $"{{varId {varDetails[0].Split(' ')[1]}}} ";
-                    lexerReturn += "{vardata" + varDetails[1] + "}";
+                    lexerReturn += $"{{vardata {varDetails[1]}}}";
                 }
 
                 else if(dataTypes.Contains(s))
@@ -51,7 +51,7 @@ namespace LexerLib
                 { 
                     lexerReturn += $"{{command {s.Trim()}}} ";
                     //lexerReturn += $"{{commandArgumentDatatype {}}}"
-                    lexerReturn += "{commandArgument " + split[1] + "}";
+                    lexerReturn += $"{{commandArgument {split[1]}}}";
                     
                 }
 
