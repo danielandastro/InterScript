@@ -24,7 +24,25 @@ namespace Parser
             {
                 if (s == " ") //check if it is just a newline character
                     continue;
-                
+                foreach(var str in s.Split(' ')) //break it down into only 'datatype' or 'string' per line of
+                {
+                    switch (str)
+                    {
+                        case "datatype":
+                            continue;
+                        case "varId":
+                            break;
+                        case "varData":
+                            break;
+                        case "":
+                            break;
+                        default:
+                            reRecompile[i] = str;
+                            break;
+                    }
+                }
+
+                i++;
             }
 
             Console.ReadKey();
