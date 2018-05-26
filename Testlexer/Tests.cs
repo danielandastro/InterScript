@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Security.Cryptography.X509Certificates;
 using NUnit.Framework;
-using LexerLib;
 
-namespace Testlexer
+namespace TestLexer
 {
     [TestFixture]
     public class Tests
@@ -17,8 +15,9 @@ namespace Testlexer
         }
         
         [Test]
-        public void Retriver(){
+        public void Retriver()
+        {
             Console.WriteLine(LexerLib.Intersharp.Lexer("retrive string x"));
-    }
+        }
     }
 }

@@ -3,7 +3,8 @@
 namespace LexerLib
 {
     public class Intersharp
-    {public static string Lexer(string command)
+    {
+        public static string Lexer(string command)
         {
             var operators = new[]
             {

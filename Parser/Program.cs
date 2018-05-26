@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Runtime.InteropServices;
 using LexerLib;
-namespace Parser
 
+namespace Parser
 {
     internal class Program
     {
@@ -17,6 +16,7 @@ namespace Parser
             Console.WriteLine(id);
             string data = Intersharp.Lexer(read).Split('{','}')[5].Replace("vardata ","");
             Console.WriteLine(data);
+            Console.ReadKey();
         }
     }
 }
