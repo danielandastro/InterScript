@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+
 namespace LexerLib
 {
     public class Intersharp

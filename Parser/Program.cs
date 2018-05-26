@@ -14,6 +14,7 @@ namespace Parser
             type = type.Split('{','}')[1];
             type = type.Replace("datatype","");
             Console.WriteLine(type);
+            Console.ReadKey();
         }
     }
 }
