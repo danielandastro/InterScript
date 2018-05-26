@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using LexerLib;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Parser
 {
@@ -8,49 +10,101 @@ namespace Parser
     {
         public static void Main(string[] args)
         {
-            //Intersharp lex = new Intersharp();
-            string read = Console.ReadLine();
-            read = Intersharp.Lexer(read);
-            //string type = "";
-            /*type = Intersharp.Lexer(read).Split('{','}')[1].Replace("datatype ","");
-            Console.WriteLine(type);
-            string id = Intersharp.Lexer(read).Split('{','}')[3].Replace("varId ","");
-            Console.WriteLine(id);
-            string data = Intersharp.Lexer(read).Split('{','}')[5].Replace("vardata ","");
-            Console.WriteLine(data);
-            Console.ReadKey();*/
-            var i = 0;
-            var reRecompile = new string[5];
-            foreach (string s in read.Split('{', '}'))
+            Dictionary<string, string> strings = new Dictionary<string, string>();
+            Dictionary<string, decimal> numbers = new Dictionary<string, decimal>();
+            strings["run"] = "run";
+            Console.WriteLine(strings["run"]);
+            string read;
+            while (true)
             {
-                if (s == " ") //check if it is just a newline character
-                    continue;
-                foreach(var str in s.Split(' ')) //break it down into only 'datatype' or 'string' per line of
+                read = Console.ReadLine();
+                read = Intersharp.Lexer(read);
+                var i = 0;
+                var commanddata = new string[5];
+                foreach (string s in read.Split('{', '}'))
                 {
-                    switch (str)
+                    if (s == " ") //check if it is just a newline character
+                        continue;
+                    foreach (var str in s.Split(' ')) //break it down into only 'datatype' or 'string' per line of
                     {
-                        case "datatype":
-                            continue;
-                        case "varId":
-                            break;
-                        case "varData":
-                            break;
-                        case "":
-                            break;
-                        default:
-                            reRecompile[i] = str;
-                            break;
+                        switch (str)
+                        {
+                            case "datatype":
+
+                                continue;
+                            case "varId":
+                                break;
+                            case "varData":
+                                break;
+                            case "":
+                                break;
+                            default:
+                                commanddata[i] = str;
+                                break;
+                        }
                     }
+
+                    i++;
                 }
 
-                i++;
-            }
-            reRecompile = reRecompile.Where(s => !string.IsNullOrEmpty(s)).ToArray();
+                commanddata = commanddata.Where(s => !string.IsNullOrEmpty(s)).ToArray();
+                switch (commanddata[0])
+                {
+                    case "string":
+                        strings[commanddata[1]] = commanddata[2];
+                        break;
+                    case "number":
+                        numbers[commanddata[1]] = decimal.Parse(commanddata[2]);
+                        break;
+                    case "print":
+                        Console.WriteLine(commanddata[1]);
+                        break;
+                    case "run":
+                        try
+                        {
+                            Process.Start(commanddata[1]);
+                        }
+                        catch (Exception)
+                        {
+                        }
 
-            foreach (var s in reRecompile)
-                Console.Write(s + " ");
-            
-            Console.ReadKey();
+                        break;
+                    case "retrieve":
+                        if (commanddata[1].Equals("number"))
+                        {
+                            try
+                            {
+                                Console.WriteLine(numbers[commanddata[2]]);
+                            }
+                            catch (Exception)
+                            {
+                                Console.WriteLine("Error: Value not initialised");
+                            }
+                        }
+                        else if (commanddata[1].Equals("string"))
+                        {
+                            try
+                            {
+                                Console.WriteLine(strings[commanddata[2]]);
+                            }
+                            catch (Exception)
+                            {
+                                Console.WriteLine("Error: Value not initialised");
+                            }
+                        }
+
+                        break;
+                    case "clear":
+                        Console.Clear();
+                        break;
+                    case "exit":
+                        Console.Clear();
+                        return;
+
+
+                }
+
+            }
         }
     }
 }
