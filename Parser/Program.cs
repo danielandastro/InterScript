@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using LexerLib;
 
 namespace Parser
@@ -44,6 +45,7 @@ namespace Parser
 
                 i++;
             }
+            reRecompile = reRecompile.Where(s => !string.IsNullOrEmpty(s)).ToArray();
 
             Console.ReadKey();
         }
