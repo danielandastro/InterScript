@@ -51,7 +51,9 @@ namespace Parser
                 switch (commanddata[0])
                 {
                     case "string":
-                        strings[commanddata[1]] = commanddata[2];
+                        try{strings[commanddata[1]] = commanddata[2];}
+                        catch{strings[commanddata[1]] = null;}
+
                         break;
                     case "number":
                         numbers[commanddata[1]] = decimal.Parse(commanddata[2]);
