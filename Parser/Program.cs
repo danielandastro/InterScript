@@ -11,7 +11,7 @@ namespace Parser
         public static void Main(string[] args)
         {
             Dictionary<string, string> strings = new Dictionary<string, string>();
-            Dictionary<string, decimal> numbers = new Dictionary<string, decimal>();
+            Dictionary<string, int> numbers = new Dictionary<string, int>();
             strings["run"] = "run";
             Console.WriteLine(strings["run"]);
             string read;
@@ -55,8 +55,8 @@ namespace Parser
                         catch{strings[commanddata[1]] = null;}
 
                         break;
-                    case "number":
-                        numbers[commanddata[1]] = decimal.Parse(commanddata[2]);
+                    case "int":
+                        numbers[commanddata[1]] = int.Parse(commanddata[2]);
                         break;
                     case "print":
                         Console.WriteLine(commanddata[1]);
