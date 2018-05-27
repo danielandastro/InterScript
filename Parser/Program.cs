@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
-using LexerLib;
 using System.Collections.Generic;
 using System.Diagnostics;
+using LexerLib;
 
 namespace Parser
 {
@@ -20,7 +20,7 @@ namespace Parser
                 read = Console.ReadLine();
                 read = Intersharp.Lexer(read);
                 var i = 0;
-                var commanddata = new string[5];
+                var commanddata = new List<string>();
                 foreach (string s in read.Split('{', '}'))
                 {
                     if (s == " ") //check if it is just a newline character
@@ -30,7 +30,6 @@ namespace Parser
                         switch (str)
                         {
                             case "datatype":
-
                                 continue;
                             case "varId":
                                 break;
@@ -39,7 +38,7 @@ namespace Parser
                             case "":
                                 break;
                             default:
-                                commanddata[i] = str;
+                                commanddata.Add(str);
                                 break;
                         }
                     }
@@ -47,7 +46,21 @@ namespace Parser
                     i++;
                 }
 
-                commanddata = commanddata.Where(s => !string.IsNullOrEmpty(s)).ToArray();
+                commanddata = commanddata.Where(s => !string.IsNullOrEmpty(s)).ToList();
+                foreach (string s in commanddata)
+                {
+                    switch (s)
+                    {
+                        case "datatype":
+                            break;
+                        case "varId":
+                            break;
+                        case "varData":
+                            break;
+                        //case ""
+
+                    }
+                }
                 switch (commanddata[0])
                 {
                     case "string":

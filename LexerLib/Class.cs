@@ -24,12 +24,12 @@ namespace LexerLib
             var classes = new[]
             {
                 ""
-                //ToDo: Populate this with class instances
+                //ToDo: Populate this with classes
             };
 
             var split = command.Split(' ');
-            var lexerReturn = "";
             var varDetails = command.Split('=');
+            var lexerReturn = "";
             foreach (string s in split)
             {
                 if (dataTypes.Contains(s) && command.Contains("=")) //check for assignment
@@ -48,9 +48,15 @@ namespace LexerLib
                 else if (commands.Contains(s))
                 { 
                     lexerReturn += $"{{command {s.Trim()}}} ";
-                    //lexerReturn += $"{{commandArgumentDatatype {}}}"
-                    try{lexerReturn += $"{{commandArgument {split[1]}}}";}
-                    catch{continue;}
+                    //lexerReturn += $"{{commandArgumentDatatype {1}}}";
+                    try
+                    {
+                        lexerReturn += $"{{commandArgument {split[2]}}}";
+                    }
+                    catch
+                    {
+                        lexerReturn += $"{{commandArgument {null}}}";
+                    }
 
                 }
 
