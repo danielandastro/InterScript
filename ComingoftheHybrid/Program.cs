@@ -5,9 +5,13 @@ namespace ComingoftheHybrid
 {
     internal class Program
     {
+        public static Dictionary<string, string> Strings = new Dictionary<string, string>();
+        public static Dictionary<string, int> Ints = new Dictionary<string, int>();
+        public static Dictionary<string, decimal> Decimals = new Dictionary<string, decimal>();
         public static void Main(string[] args)
         {
-            Parse("run x");
+            Parse("string x = dog");
+            Parse("retrieve x");
         }
 
         public static void Parse(string command)
@@ -18,6 +22,7 @@ namespace ComingoftheHybrid
             string keyword = "", dataType="", args="", keywordType="", varName="", varData="";
             var spaceSplit = command.Split(' ');
             var equalSplit = command.Split('=');
+            // since the parser and lexer are joined, i made it easier by using separate variables for everything
             if (spaceSplit.Length == 2)
             {
                 keywordType = "command";
@@ -31,7 +36,7 @@ namespace ComingoftheHybrid
                 dataType = spaceSplit[0];
                 varData = equalSplit[1];
             }
-
+//parsing begins here
             if (keywordType.Equals("command"))
             {
                 switch (keyword)
@@ -39,7 +44,14 @@ namespace ComingoftheHybrid
                     case "run":
                         System.Diagnostics.Process.Start(args);
                         break;
-                    
+                    case "retrieve":
+                        try{Console.WriteLine(Strings [args]);}
+                        catch(Exception){}
+                        try{Console.WriteLine(Ints [args]);}
+                        catch(Exception){}
+                        try{Console.WriteLine(Decimals [args]);}
+                        catch(Exception){}
+                        break;
                     
                 }
 
@@ -50,13 +62,13 @@ namespace ComingoftheHybrid
                 switch (dataType)
                 {
                     case "string":
-                        strings[varName] = varData;
+                        Strings[varName] = varData;
                         break;
                     case "int":
-                        ints[varName] = int.Parse(varData);
+                        Ints[varName] = int.Parse(varData);
                         break;
                     case "decimal":
-                        decimals[varName] = decimal.Parse(varData);
+                        Decimals[varName] = decimal.Parse(varData);
                         break;
                 }
                 
