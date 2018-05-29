@@ -8,11 +8,19 @@ namespace ComingoftheHybrid
         public static Dictionary<string, string> Strings = new Dictionary<string, string>();
         public static Dictionary<string, int> Ints = new Dictionary<string, int>();
         public static Dictionary<string, decimal> Decimals = new Dictionary<string, decimal>();
+
         public static void Main(string[] args)
         {
-            Parse("string x = dog");
-            Parse("retrieve x");
-        }
+            /* Parse("string x = y");
+ Parse("retrieve x");
+             string test =Console.ReadLine();
+             Parse(test);*/
+            string hold = "";
+            
+            hold = Console.ReadLine();
+            Parse(hold);
+        
+    }
 
         public static void Parse(string command)
         {
