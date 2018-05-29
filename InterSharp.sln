@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLexer", "Testlexer\Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parser", "Parser\Parser.csproj", "{BD250165-B78E-4BF0-9235-B804812DE0F3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComingoftheHybrid", "ComingoftheHybrid\ComingoftheHybrid.csproj", "{B7A66589-2783-41BE-96F1-137E46146765}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{BD250165-B78E-4BF0-9235-B804812DE0F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD250165-B78E-4BF0-9235-B804812DE0F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD250165-B78E-4BF0-9235-B804812DE0F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7A66589-2783-41BE-96F1-137E46146765}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7A66589-2783-41BE-96F1-137E46146765}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7A66589-2783-41BE-96F1-137E46146765}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7A66589-2783-41BE-96F1-137E46146765}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
