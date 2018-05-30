@@ -1,5 +1,7 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace ComingoftheHybrid
 {
@@ -9,55 +11,79 @@ namespace ComingoftheHybrid
         public static Dictionary<string, int> Ints = new Dictionary<string, int>();
         public static Dictionary<string, decimal> Decimals = new Dictionary<string, decimal>();
         public static string allException, newException;
-        public static bool allowPassiveExceptionHandling = true;//whether to display exception or just store it
+        public static bool allowPassiveExceptionHandling = true; //whether to display exception or just store it
+
         public static void Main(string[] args)
         {
             /* Parse("string x = y");
  Parse("retrieve x");
              string test =Console.ReadLine();
              Parse(test);*/
-            string hold = "";
-            
-            hold = Console.ReadLine();
-            Parse(hold);
-        
-    }
+            var hold = "";
+            while(true){
+                hold = Console.ReadLine();
+                Parse(hold);
+            }
+        }
 
         public static void Parse(string command)
         {
-            var strings = new Dictionary<string, string>();
-            var ints = new Dictionary<string, int>();
-            var decimals = new Dictionary<string, decimal>();
-            string keyword = "", dataType="", args="", keywordType="", varName="", varData="";
+            string keyword = "", dataType = "", args = "", keywordType = "", varName = "", varData = "";
             var spaceSplit = command.Split(' ');
             var equalSplit = command.Split('=');
             // since the parser and lexer are joined, i made it easier by using separate variables for everything
-            if (spaceSplit.Length == 2)
+            if (spaceSplit.Length <=2)
             {
                 keywordType = "command";
                 keyword = spaceSplit[0];
-                args = spaceSplit[1];
+                try
+                {
+                    args = spaceSplit[1];
+                }
+                catch (Exception)
+                {
+                    ExceptionHandler("NoArgs");
+                }
             }
             else
             {
                 keywordType = "declaration";
                 varName = spaceSplit[1];
                 dataType = spaceSplit[0];
-                varData = equalSplit[1];
+
+                try
+                {
+                    varData = equalSplit[1];
+                }
+                catch (Exception)
+                {
+                    ExceptionHandler("InvalidExpression");
+                }
             }
+
 //parsing begins here
             if (keywordType.Equals("command"))
-            {
                 switch (keyword)
                 {
                     case "run":
-                        System.Diagnostics.Process.Start(args);
+                        Process.Start(args);
                         break;
                     case "retrieve":
-                        try{Console.WriteLine(Strings [args]);}
-                        catch(Exception){}
-                        try{Console.WriteLine(Ints [args]);}
-                        catch(Exception){}
+                        try
+                        {
+                            Console.WriteLine(Strings[args]);
+                        }
+                        catch (Exception)
+                        {
+                        }
+
+                        try
+                        {
+                            Console.WriteLine(Ints[args]);
+                        }
+                        catch (Exception)
+                        {
+                        }
 
                         try
                         {
@@ -67,14 +93,16 @@ namespace ComingoftheHybrid
                         {
                             ExceptionHandler("varNotInitialised");
                         }
-                        break;
-                    
-                }
 
-                
-            }
+                        break;
+                    case "show":
+                        Show(args);
+                        break;
+                    default:
+                        ExceptionHandler("InvalidKeyword");
+                        break;
+                }
             else
-            {
                 switch (dataType)
                 {
                     case "string":
@@ -89,18 +117,18 @@ namespace ComingoftheHybrid
                     case "set":
                         SetLCV(varName, varData);
                         break;
+                    default:
+                        ExceptionHandler("InvalidKeyword");
+                        break;
+                    
                 }
-                
-                
-            }
         }
 
         public static void ExceptionHandler(string exception)
         {
             newException = exception;
             allException += Environment.NewLine + exception;
-            if (allowPassiveExceptionHandling == false) {Console.WriteLine(newException);}
-
+            if (allowPassiveExceptionHandling == false) Console.WriteLine(newException);
         }
 
         public static void SetLCV(string var, string val)
@@ -109,10 +137,25 @@ namespace ComingoftheHybrid
             {
                 case "passiveexceptions":
                     if (val.Equals(true))
-                    {allowPassiveExceptionHandling = true;}
+                        allowPassiveExceptionHandling = true;
+                    else
+                        allowPassiveExceptionHandling = false;
                     break;
                 default:
                     ExceptionHandler("LCVDoesNotExist");
+                    break;
+            }
+        }
+
+        public static void Show(string arg)
+        {
+            switch (arg)
+            {
+                case "newexceptions":
+                    Console.WriteLine(newException);
+                    break;
+                case "allexceptions":
+                    Console.WriteLine(allException);
                     break;
             }
             
