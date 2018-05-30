@@ -2,7 +2,7 @@
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Diagnostics;
-
+using System.Windows.Forms;
 namespace ComingoftheHybrid
 {
     internal class Program
@@ -22,9 +22,12 @@ namespace ComingoftheHybrid
             {
                 //Console.Write("Path to .IS file: ");
                 int counter = 0;
-                string line, path = Console.ReadLine();
+                string line, path="";
+                OpenFileDialog fd = new OpenFileDialog();
+                fd.ShowDialog();
+                path = fd.FileName;
                 var file=new System.IO.StreamReader(path);  
-                while((line = file.ReadLine()) != null)  
+                while((line = file.ReadLine()) != null)
                 {  
                     Parse(line);  
                     counter++;  
