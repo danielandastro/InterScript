@@ -8,7 +8,8 @@ namespace ComingoftheHybrid
         public static Dictionary<string, string> Strings = new Dictionary<string, string>();
         public static Dictionary<string, int> Ints = new Dictionary<string, int>();
         public static Dictionary<string, decimal> Decimals = new Dictionary<string, decimal>();
-
+        public static string allException, newException;
+        public static bool allowPassiveExceptionHandling = true;//whether to display exception or just store it
         public static void Main(string[] args)
         {
             /* Parse("string x = y");
@@ -57,8 +58,15 @@ namespace ComingoftheHybrid
                         catch(Exception){}
                         try{Console.WriteLine(Ints [args]);}
                         catch(Exception){}
-                        try{Console.WriteLine(Decimals [args]);}
-                        catch(Exception){}
+
+                        try
+                        {
+                            Console.WriteLine(Decimals[args]);
+                        }
+                        catch (Exception)
+                        {
+                            ExceptionHandler("varNotInitialised");
+                        }
                         break;
                     
                 }
@@ -82,6 +90,20 @@ namespace ComingoftheHybrid
                 
                 
             }
+        }
+
+        public static void ExceptionHandler(string exception)
+        {
+            newException = exception;
+            allException += Environment.NewLine + exception;
+            if (allowPassiveExceptionHandling == true) {Console.WriteLine(newException);}
+
+        }
+
+        public static void SetLCV(string var, string val)
+        {
+            
+            
         }
     }
 }
