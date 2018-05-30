@@ -86,6 +86,9 @@ namespace ComingoftheHybrid
                     case "decimal":
                         Decimals[varName] = decimal.Parse(varData);
                         break;
+                    case "set":
+                        SetLCV(varName, varData);
+                        break;
                 }
                 
                 
@@ -96,13 +99,22 @@ namespace ComingoftheHybrid
         {
             newException = exception;
             allException += Environment.NewLine + exception;
-            if (allowPassiveExceptionHandling == true) {Console.WriteLine(newException);}
+            if (allowPassiveExceptionHandling == false) {Console.WriteLine(newException);}
 
         }
 
         public static void SetLCV(string var, string val)
         {
-            
+            switch (var)
+            {
+                case "passiveexceptions":
+                    if (val.Equals(true))
+                    {allowPassiveExceptionHandling = true;}
+                    break;
+                default:
+                    ExceptionHandler("LCVDoesNotExist");
+                    break;
+            }
             
         }
     }
