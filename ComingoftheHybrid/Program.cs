@@ -1,47 +1,62 @@
 ﻿using System;
-using System.CodeDom;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
+
 namespace ComingoftheHybrid
 {
-    internal class Program
+    static class Program
     {
-        public static Dictionary<string, string> Strings = new Dictionary<string, string>();
-        public static Dictionary<string, int> Ints = new Dictionary<string, int>();
-        public static Dictionary<string, decimal> Decimals = new Dictionary<string, decimal>();
-        public static string allException, newException;
-        public static bool allowPassiveExceptionHandling = true; //whether to display exception or just store it
+        private static readonly Dictionary<string, string> Strings = new Dictionary<string, string>();
+        private static readonly Dictionary<string, int> Ints = new Dictionary<string, int>();
+        private static readonly Dictionary<string, decimal> Decimals = new Dictionary<string, decimal>();
+        private static string _allException, _newException;
+        private static bool _allowPassiveExceptionHandling = true; //whether to display exception or just store it
 
+        [STAThread]
+        //TODO: Make program enter CLI after parsing .IS file
         public static void Main(string[] args)
         {
+            //Handling file interpreting and main interfacing
             Console.WriteLine("Welcome to InterScript");
             Console.Write("Open file? ");
             string open = Console.ReadLine();
-            if (open.Equals("y") || open.Equals("yes") || open.Equals("true"))
+            if (open != null && (open.Equals("y") || open.Equals("yes") || open.Equals("true")))
             {
                 //Console.Write("Path to .IS file: ");
-                int counter = 0;
-                string line, path="";
-                OpenFileDialog fd = new OpenFileDialog();
-                fd.ShowDialog();
-                path = fd.FileName;
-                var file=new System.IO.StreamReader(path);  
-                while((line = file.ReadLine()) != null)
-                {  
-                    Parse(line);  
-                    counter++;  
-                }     
+                string line, path = "";
+                using (OpenFileDialog fd = new OpenFileDialog())
+                {
+                    fd.ShowDialog();
+                    path = fd.FileName;
+                }
+
+                using (var file = new System.IO.StreamReader(path))
+                {
+                    var counter = 0;
+                    while ((line = file.ReadLine()) != null)
+                    {
+                        Parse(line);
+                        counter++;
+                    }
+                }
             }
-            else{var hold = "";
-                while(true){
+            
+            //Standard interpreter CLI
+            else
+            {
+                var hold = "";
+                while(true)
+                {
                     Console.Write(">");
                     hold = Console.ReadLine();
                     Parse(hold);
-                }}
+                }
+                
+            }
         }
 
-        public static void Parse(string command)
+        private static void Parse(string command)
         {
             string keyword = "", dataType = "", args = "", keywordType = "", varName = "", varData = "";
             var spaceSplit = command.Split(' ');
@@ -141,9 +156,9 @@ namespace ComingoftheHybrid
 
         public static void ExceptionHandler(string exception)
         {
-            newException = exception;
-            allException += Environment.NewLine + exception;
-            if (allowPassiveExceptionHandling == false) Console.WriteLine(newException);
+            _newException = exception;
+            _allException += Environment.NewLine + exception;
+            if (_allowPassiveExceptionHandling == false) Console.WriteLine(_newException);
         }
 
         public static void SetLCV(string var, string val)
@@ -151,10 +166,7 @@ namespace ComingoftheHybrid
             switch (var)
             {
                 case "passiveexceptions":
-                    if (val.Equals(true))
-                        allowPassiveExceptionHandling = true;
-                    else
-                        allowPassiveExceptionHandling = false;
+                    _allowPassiveExceptionHandling = val.Equals(true);
                     break;
                 default:
                     ExceptionHandler("LCVDoesNotExist");
@@ -167,10 +179,10 @@ namespace ComingoftheHybrid
             switch (arg)
             {
                 case "newexceptions":
-                    Console.WriteLine(newException);
+                    Console.WriteLine(_newException);
                     break;
                 case "allexceptions":
-                    Console.WriteLine(allException);
+                    Console.WriteLine(_allException);
                     break;
             }
             
