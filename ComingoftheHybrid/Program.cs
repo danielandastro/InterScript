@@ -15,15 +15,27 @@ namespace ComingoftheHybrid
 
         public static void Main(string[] args)
         {
-            /* Parse("string x = y");
- Parse("retrieve x");
-             string test =Console.ReadLine();
-             Parse(test);*/
-            var hold = "";
-            while(true){
-                hold = Console.ReadLine();
-                Parse(hold);
+            Console.WriteLine("Welcome to InterScript");
+            Console.Write("Open file? ");
+            string open = Console.ReadLine();
+            if (open.Equals("y") || open.Equals("yes") || open.Equals("true"))
+            {
+                //Console.Write("Path to .IS file: ");
+                int counter = 0;
+                string line, path = Console.ReadLine();
+                var file=new System.IO.StreamReader(path);  
+                while((line = file.ReadLine()) != null)  
+                {  
+                    Parse(line);  
+                    counter++;  
+                }     
             }
+            else{var hold = "";
+                while(true){
+                    Console.Write(">");
+                    hold = Console.ReadLine();
+                    Parse(hold);
+                }}
         }
 
         public static void Parse(string command)
