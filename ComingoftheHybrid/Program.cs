@@ -35,9 +35,11 @@ namespace ComingoftheHybrid
                 {
                     int counter = 0;
                     string line = file.ReadLine();
-                    if (line == null) return;
-                    Parse(line);
-                    counter++;
+                    if (line != null)
+                    {
+                        Parse(line);
+                        counter++;
+                    }
                 }
             }
 
