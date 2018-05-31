@@ -96,7 +96,8 @@ namespace ComingoftheHybrid
                 switch (keyword)
                 {
                     case "run":
-                        Process.Start(args);
+                        try{Process.Start(args);}
+                        catch(Exception){ExceptionHandler("InvalidProgram");}
                         break;
                     case "retrieve":
                         try
