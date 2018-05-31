@@ -58,7 +58,7 @@ namespace ComingoftheHybrid
         private static void Parse(string command)
         {
             //Lexer: finds key parts of the program, to parse later.
-            string keyword = "", dataType = "", args = "", keywordType = "", varName = "", varData = "";
+            string keyword = "", dataType = "", args = "", keywordType, varName = "", varData = "";
             var spaceSplit = command.Split(' ');
             var equalSplit = command.Split('=');
             if (spaceSplit.Length <= 2)
@@ -141,6 +141,7 @@ namespace ComingoftheHybrid
                         ExceptionHandler("InvalidKeyword");
                         break;
                 }
+            
             else
                 switch (dataType)
                 {
@@ -174,14 +175,14 @@ namespace ComingoftheHybrid
             switch (var)
             {
                 case "passiveexceptions":
-                    _allowPassiveExceptionHandling = val.Equals(true);
+                    _allowPassiveExceptionHandling = bool.Parse(val);
                     break;
                 default:
                     ExceptionHandler("LCVDoesNotExist");
                     break;
             }
         }
-
+        
         private static void Show(string arg)
         {
             switch (arg)
