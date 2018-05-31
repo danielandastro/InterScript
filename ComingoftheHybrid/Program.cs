@@ -24,7 +24,7 @@ namespace ComingoftheHybrid
             if (open != null && (open.Equals("y") || open.Equals("yes") || open.Equals("true")))
             {
                 //Console.Write("Path to .IS file: ");
-                string line, path = "";
+                string path;
                 using (OpenFileDialog fd = new OpenFileDialog())
                 {
                     fd.ShowDialog();
@@ -33,36 +33,33 @@ namespace ComingoftheHybrid
 
                 using (var file = new System.IO.StreamReader(path))
                 {
-                    var counter = 0;
-                    while ((line = file.ReadLine()) != null)
-                    {
-                        Parse(line);
-                        counter++;
-                    }
+                    int counter = 0;
+                    string line = file.ReadLine();
+                    if (line == null) return;
+                    Parse(line);
+                    counter++;
                 }
             }
-            
+
             //Standard interpreter CLI
             else
             {
-                var hold = "";
-                while(true)
+                while (true)
                 {
                     Console.Write(">");
-                    hold = Console.ReadLine();
+                    var hold = Console.ReadLine();
                     Parse(hold);
                 }
-                
             }
         }
 
         private static void Parse(string command)
         {
+            //Lexer: finds key parts of the program, to parse later.
             string keyword = "", dataType = "", args = "", keywordType = "", varName = "", varData = "";
             var spaceSplit = command.Split(' ');
             var equalSplit = command.Split('=');
-            // since the parser and lexer are joined, i made it easier by using separate variables for everything
-            if (spaceSplit.Length <=2)
+            if (spaceSplit.Length <= 2)
             {
                 keywordType = "command";
                 keyword = spaceSplit[0];
@@ -80,7 +77,6 @@ namespace ComingoftheHybrid
                 keywordType = "declaration";
                 varName = spaceSplit[1];
                 dataType = spaceSplit[0];
-
                 try
                 {
                     varData = equalSplit[1];
@@ -91,13 +87,20 @@ namespace ComingoftheHybrid
                 }
             }
 
-//parsing begins here
+            //Parsing
             if (keywordType.Equals("command"))
                 switch (keyword)
                 {
                     case "run":
-                        try{Process.Start(args);}
-                        catch(Exception){ExceptionHandler("InvalidProgram");}
+                        try
+                        {
+                            Process.Start(args);
+                        }
+                        catch (Exception)
+                        {
+                            ExceptionHandler("InvalidProgram");
+                        }
+
                         break;
                     case "retrieve":
                         try
@@ -106,6 +109,7 @@ namespace ComingoftheHybrid
                         }
                         catch (Exception)
                         {
+                            // ignored
                         }
 
                         try
@@ -114,6 +118,7 @@ namespace ComingoftheHybrid
                         }
                         catch (Exception)
                         {
+                            // ignored
                         }
 
                         try
@@ -129,9 +134,7 @@ namespace ComingoftheHybrid
                     case "show":
                         Show(args);
                         break;
-                    case "exit":
-                        return;
-                        
+                    case "exit": return;
                     default:
                         ExceptionHandler("InvalidKeyword");
                         break;
@@ -149,23 +152,22 @@ namespace ComingoftheHybrid
                         Decimals[varName] = decimal.Parse(varData);
                         break;
                     case "set":
-                        SetLCV(varName, varData);
+                        SetLcv(varName, varData);
                         break;
                     default:
                         ExceptionHandler("InvalidKeyword");
                         break;
-                    
                 }
         }
 
-        public static void ExceptionHandler(string exception)
+        private static void ExceptionHandler(string exception)
         {
             _newException = exception;
             _allException += Environment.NewLine + exception;
             if (_allowPassiveExceptionHandling == false) Console.WriteLine(_newException);
         }
 
-        public static void SetLCV(string var, string val)
+        private static void SetLcv(string var, string val)
         {
             switch (var)
             {
@@ -178,7 +180,7 @@ namespace ComingoftheHybrid
             }
         }
 
-        public static void Show(string arg)
+        private static void Show(string arg)
         {
             switch (arg)
             {
@@ -189,7 +191,6 @@ namespace ComingoftheHybrid
                     Console.WriteLine(_allException);
                     break;
             }
-            
         }
     }
 }
