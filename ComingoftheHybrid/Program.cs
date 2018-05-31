@@ -129,6 +129,9 @@ namespace ComingoftheHybrid
                     case "show":
                         Show(args);
                         break;
+                    case "exit":
+                        return;
+                        
                     default:
                         ExceptionHandler("InvalidKeyword");
                         break;
