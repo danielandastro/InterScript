@@ -1,28 +1,20 @@
 ﻿//This is a comment (single-line)
 
 /*This
-
  *Is
-
  *A
-
  *Multiline
  *Comment
-
  */
 
 
 func main()
-
 {
     string x = a //Statements of any sort do not need semicolon ends
     // Assignments must occur at initialisation, and data type must be mentioned
     int y = 2
     decimal z = 2.0
     retrieve x //Return x
-
     print hello world
-
     retrieve y //Return variable y, ends function
-
 }
