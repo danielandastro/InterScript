@@ -142,9 +142,7 @@ namespace ComingoftheHybrid
                         ExceptionHandler("InvalidKeyword");
                         break;
                     case "script":
-                        var lang = args.Replace(command.Split('{', '}')[1], "");
-                        lang = lang.Replace("{", "");
-                        lang = lang.Replace("}", "");
+                        var lang = args.Replace(command.Split('{', '}')[1], "").Replace("}", "").Replace("{", "");
                         try{ScriptRunner(lang, command.Split('{', '}')[1]);}
                         catch(Exception){ExceptionHandler("NoScriptProvided");}
                         break;
