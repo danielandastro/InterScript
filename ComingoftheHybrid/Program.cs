@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
-
+using System.IO;
+using System.Text;
 namespace ComingoftheHybrid
 {
     static class Program
@@ -141,7 +142,11 @@ namespace ComingoftheHybrid
                         ExceptionHandler("InvalidKeyword");
                         break;
                     case "script":
-                        ScriptRunner(args, command.Split('{', '}')[0]);
+                        var lang = args.Replace(command.Split('{', '}')[1], "");
+                        lang = lang.Replace("{", "");
+                        lang = lang.Replace("}", "");
+                        try{ScriptRunner(lang, command.Split('{', '}')[1]);}
+                        catch(Exception){ExceptionHandler("NoScriptProvided");}
                         break;
                 }
             
@@ -199,9 +204,28 @@ namespace ComingoftheHybrid
             }
         }
 
-        private static void ScriptRunner(string lang, string scrpit)
+        private static void ScriptRunner(string lang, string script)
         {
-            ExceptionHandler("NotImplemented");
+            switch (lang)
+            {
+                case "python":
+                    string path = @"cacherun.py";
+                    if (File.Exists(path))
+                    {
+                        File.Delete(path);
+                    }
+                    using (var writer = File.Create(path))
+                    {
+                        Byte[] info = new UTF8Encoding(true).GetBytes(script);
+                        writer.Write(info, 0, info.Length);
+                    }                   
+                    Process.Start("python", "./cacherun.py");
+                    break;
+                default:
+                ExceptionHandler("NotImplemented");
+                break;
+            }
+            
             
         }
     }
