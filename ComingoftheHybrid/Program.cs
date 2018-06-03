@@ -140,6 +140,9 @@ namespace ComingoftheHybrid
                     default:
                         ExceptionHandler("InvalidKeyword");
                         break;
+                    case "script":
+                        ScriptRunner(args, command.Split('{', '}')[0]);
+                        break;
                 }
             
             else
@@ -194,6 +197,12 @@ namespace ComingoftheHybrid
                     Console.WriteLine(_allException);
                     break;
             }
+        }
+
+        private static void ScriptRunner(string lang, string scrpit)
+        {
+            ExceptionHandler("NotImplemented");
+            
         }
     }
 }
