@@ -4,9 +4,10 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using System.IO;
 using System.Text;
+
 namespace ComingoftheHybrid
 {
-    static class Program
+    internal static class Program
     {
         private static readonly Dictionary<string, string> Strings = new Dictionary<string, string>();
         private static readonly Dictionary<string, int> Ints = new Dictionary<string, int>();
@@ -21,21 +22,21 @@ namespace ComingoftheHybrid
             //Handling file interpreting and main interfacing
             Console.WriteLine("Welcome to InterScript");
             Console.Write("Open file? ");
-            string open = Console.ReadLine();
+            var open = Console.ReadLine();
             if (open != null && (open.Equals("y") || open.Equals("yes") || open.Equals("true")))
             {
                 //Console.Write("Path to .IS file: ");
                 string path;
-                using (OpenFileDialog fd = new OpenFileDialog())
+                using (var fd = new OpenFileDialog())
                 {
                     fd.ShowDialog();
                     path = fd.FileName;
                 }
 
-                using (var file = new System.IO.StreamReader(path))
+                using (var file = new StreamReader(path))
                 {
-                    int counter = 0;
-                    string line = file.ReadLine();
+                    var counter = 0;
+                    var line = file.ReadLine();
                     if (line != null)
                     {
                         Parse(line);
@@ -143,8 +144,15 @@ namespace ComingoftheHybrid
                         break;
                     case "script":
                         var lang = args.Replace(command.Split('{', '}')[1], "").Replace("}", "").Replace("{", "");
-                        try{ScriptRunner(lang, command.Split('{', '}')[1]);}
-                        catch(Exception){ExceptionHandler("NoScriptProvided");}
+                        try
+                        {
+                            ScriptRunner(lang, command.Split('{', '}')[1]);
+                        }
+                        catch (Exception)
+                        {
+                            ExceptionHandler("NoScriptProvided");
+                        }
+
                         break;
                     case "read":
                         try
@@ -167,15 +175,16 @@ namespace ComingoftheHybrid
 
                         try
                         {
-                            Decimals[args] = Decimal.Parse(Console.ReadLine());
+                            Decimals[args] = decimal.Parse(Console.ReadLine());
                         }
                         catch (Exception)
                         {
                             ExceptionHandler("varNotInitialised");
                         }
+
                         break;
                 }
-            
+
             else
                 switch (dataType)
                 {
@@ -216,7 +225,7 @@ namespace ComingoftheHybrid
                     break;
             }
         }
-        
+
         private static void Show(string arg)
         {
             switch (arg)
@@ -235,24 +244,21 @@ namespace ComingoftheHybrid
             switch (lang)
             {
                 case "python":
-                    string path = @"cacherun.py";
-                    if (File.Exists(path))
-                    {
-                        File.Delete(path);
-                    }
+                    var path = @"cacherun.py";
+                    if (File.Exists(path)) File.Delete(path);
+
                     using (var writer = File.Create(path))
                     {
-                        Byte[] info = new UTF8Encoding(true).GetBytes(script);
+                        var info = new UTF8Encoding(true).GetBytes(script);
                         writer.Write(info, 0, info.Length);
-                    }                   
+                    }
+
                     Process.Start("python", "./cacherun.py");
                     break;
                 default:
-                ExceptionHandler("NotImplemented");
-                break;
+                    ExceptionHandler("NotImplemented");
+                    break;
             }
-            
-            
         }
     }
 }
