@@ -146,6 +146,34 @@ namespace ComingoftheHybrid
                         try{ScriptRunner(lang, command.Split('{', '}')[1]);}
                         catch(Exception){ExceptionHandler("NoScriptProvided");}
                         break;
+                    case "read":
+                        try
+                        {
+                            Strings[args] = Console.ReadLine();
+                        }
+                        catch (Exception)
+                        {
+                            // ignored
+                        }
+
+                        try
+                        {
+                            Ints[args] = Console.Read();
+                        }
+                        catch (Exception)
+                        {
+                            // ignored
+                        }
+
+                        try
+                        {
+                            Decimals[args] = Decimal.Parse(Console.ReadLine());
+                        }
+                        catch (Exception)
+                        {
+                            ExceptionHandler("varNotInitialised");
+                        }
+                        break;
                 }
             
             else
