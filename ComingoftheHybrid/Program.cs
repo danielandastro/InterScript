@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using System.IO;
 using System.Text;
-
+using ISAExternalHandler;
 namespace ComingoftheHybrid
 {
     internal static class Program
@@ -15,6 +15,7 @@ namespace ComingoftheHybrid
         private static string _allException, _newException;
         private static bool _allowPassiveExceptionHandling = true; //whether to display exception or just store it
         private static bool _autocacheclean = true;
+        private static bool _ispath = true;
         [STAThread]
         //TODO: Make program enter CLI after parsing .IS file
         public static void Main(string[] args)
@@ -143,6 +144,8 @@ namespace ComingoftheHybrid
                         ExceptionHandler("InvalidKeyword");
                         break;
                     case "script":
+                        if (args.Contains("{")) _ispath = false;
+                        else _ispath = true;
                         var lang = args.Replace(command.Split('{', '}')[1], "").Replace("}", "").Replace("{", "");
                         try
                         {
@@ -244,24 +247,7 @@ namespace ComingoftheHybrid
 
         private static void ScriptRunner(string lang, string script)
         {
-            switch (lang)
-            {
-                case "python":
-                    var path = @"cacherun.py";
-                    if (File.Exists(path)) File.Delete(path);
-
-                    using (var writer = File.Create(path))
-                    {
-                        var info = new UTF8Encoding(true).GetBytes(script);
-                        writer.Write(info, 0, info.Length);
-                    }
-
-                    Process.Start("python", "./cacherun.py");
-                    break;
-                default:
-                    ExceptionHandler("NotImplemented");
-                    break;
-            }
+            Start.Runner(lang, script, _ispath);
         }
 
         private static void CsharpCodeRunner(string execute)
