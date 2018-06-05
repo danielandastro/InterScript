@@ -183,6 +183,9 @@ namespace ComingoftheHybrid
                         }
 
                         break;
+                    case "clean":
+                        CacheCleaner();
+                        break;
                 }
 
             else
