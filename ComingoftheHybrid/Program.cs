@@ -14,7 +14,7 @@ namespace ComingoftheHybrid
         private static readonly Dictionary<string, decimal> Decimals = new Dictionary<string, decimal>();
         private static string _allException, _newException;
         private static bool _allowPassiveExceptionHandling = true; //whether to display exception or just store it
-
+        private static bool _autocacheclean = true;
         [STAThread]
         //TODO: Make program enter CLI after parsing .IS file
         public static void Main(string[] args)
@@ -23,6 +23,7 @@ namespace ComingoftheHybrid
             Console.WriteLine("Welcome to InterScript");
             Console.Write("Open file? ");
             var open = Console.ReadLine();
+            
             if (open != null && (open.Equals("y") || open.Equals("yes") || open.Equals("true")))
             {
                 //Console.Write("Path to .IS file: ");
@@ -37,11 +38,13 @@ namespace ComingoftheHybrid
                 {
                     var counter = 0;
                     var line = file.ReadLine();
-                    if (line != null)
+                    while (line != null)
                     {
+                        line = file.ReadLine();
                         Parse(line);
                         counter++;
                     }
+                    if (_autocacheclean) CacheCleaner();
                 }
             }
 
@@ -138,7 +141,7 @@ namespace ComingoftheHybrid
                     case "show":
                         Show(args);
                         break;
-                    case "exit": return;
+                    case "exit": if (_autocacheclean) CacheCleaner(); return;
                     default:
                         ExceptionHandler("InvalidKeyword");
                         break;
@@ -260,5 +263,49 @@ namespace ComingoftheHybrid
                     break;
             }
         }
+
+        private static void CsharpCodeRunner(string execute)
+        {
+            //new Evaluator(new CompilerContext(new CompilerSettings(), new ConsoleReportPrinter())).Run(execute);
+        }
+
+        private static void PreStartConfigCheck()
+        {
+            if (!File.Exists(@"config.ini"))
+            {
+                Console.WriteLine("config.ini missing");
+            }
+            else
+            {
+                using (var file = new StreamReader(@"config.ini"))
+                {
+                    string line=file.ReadLine();
+                    while(line != null)
+                    {line = file.ReadLine();
+                        switch (line)
+                        {
+                            case "autocleancache":
+                                if (line.Contains("true"))
+                                {
+                                    autocacheclean = true;
+                                }
+                                break;
+                            default:
+                                break;
+                        }
+                        
+                    }
+                    
+                }
+            }
+        }
+
+        private static void CacheCleaner()
+        {
+            if (File.Exists(@"cacherun.py")) File.Delete(@"cacherun.py");
+            //ToDo: Add cleanup for all supported languages
+        }
     }
+    
+    
 }
