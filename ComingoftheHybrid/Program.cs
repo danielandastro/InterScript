@@ -19,11 +19,11 @@ namespace ComingoftheHybrid
         //TODO: Make program enter CLI after parsing .IS file
         public static void Main(string[] args)
         {
+            PreFlightChecks(); // Runs all the pre loading 
             //Handling file interpreting and main interfacing
             Console.WriteLine("Welcome to InterScript");
             Console.Write("Open file? ");
             var open = Console.ReadLine();
-            
             if (open != null && (open.Equals("y") || open.Equals("yes") || open.Equals("true")))
             {
                 //Console.Write("Path to .IS file: ");
@@ -36,28 +36,25 @@ namespace ComingoftheHybrid
 
                 using (var file = new StreamReader(path))
                 {
-                    var counter = 0;
                     var line = file.ReadLine();
                     while (line != null)
                     {
                         line = file.ReadLine();
                         Parse(line);
-                        counter++;
                     }
                     if (_autocacheclean) CacheCleaner();
                 }
             }
 
             //Standard interpreter CLI
-            else
-            {
+            
                 while (true)
                 {
                     Console.Write(">");
                     var hold = Console.ReadLine();
                     Parse(hold);
                 }
-            }
+            
         }
 
         private static void Parse(string command)
@@ -269,7 +266,8 @@ namespace ComingoftheHybrid
             //new Evaluator(new CompilerContext(new CompilerSettings(), new ConsoleReportPrinter())).Run(execute);
         }
 
-        private static void PreStartConfigCheck()
+        private static void PreFlightChecks()//Loads global langauge settings into memory
+        //ToDo: Add integrity checks for all executables
         {
             if (!File.Exists(@"config.ini"))
             {
@@ -287,7 +285,7 @@ namespace ComingoftheHybrid
                             case "autocleancache":
                                 if (line.Contains("true"))
                                 {
-                                    autocacheclean = true;
+                                    _autocacheclean = true;
                                 }
                                 break;
                             default:
