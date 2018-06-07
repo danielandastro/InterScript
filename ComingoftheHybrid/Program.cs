@@ -2,63 +2,66 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
-
+using System.IO;
+using System.Text;
+using ISAExternalHandler;
 namespace ComingoftheHybrid
 {
-    static class Program
+    internal static class Program
     {
         private static readonly Dictionary<string, string> Strings = new Dictionary<string, string>();
         private static readonly Dictionary<string, int> Ints = new Dictionary<string, int>();
         private static readonly Dictionary<string, decimal> Decimals = new Dictionary<string, decimal>();
         private static string _allException, _newException;
         private static bool _allowPassiveExceptionHandling = true; //whether to display exception or just store it
-
+        private static bool _autocacheclean = true;
+        private static bool _ispath = true;
         [STAThread]
         //TODO: Make program enter CLI after parsing .IS file
         public static void Main(string[] args)
         {
+            PreFlightChecks(); // Runs all the pre loading 
             //Handling file interpreting and main interfacing
             Console.WriteLine("Welcome to InterScript");
             Console.Write("Open file? ");
-            string open = Console.ReadLine();
+            var open = Console.ReadLine();
             if (open != null && (open.Equals("y") || open.Equals("yes") || open.Equals("true")))
             {
                 //Console.Write("Path to .IS file: ");
                 string path;
-                using (OpenFileDialog fd = new OpenFileDialog())
+                using (var fd = new OpenFileDialog())
                 {
                     fd.ShowDialog();
                     path = fd.FileName;
                 }
 
-                using (var file = new System.IO.StreamReader(path))
+                using (var file = new StreamReader(path))
                 {
-                    int counter = 0;
-                    string line = file.ReadLine();
-                    if (line != null)
+                    var line = file.ReadLine();
+                    while (line != null)
                     {
+                        line = file.ReadLine();
                         Parse(line);
-                        counter++;
                     }
+                    if (_autocacheclean) CacheCleaner();
                 }
             }
 
             //Standard interpreter CLI
-            else
-            {
+            
                 while (true)
                 {
                     Console.Write(">");
                     var hold = Console.ReadLine();
                     Parse(hold);
                 }
-            }
+            
         }
 
         private static void Parse(string command)
         {
             //Lexer: finds key parts of the program, to parse later.
-            string keyword = "", dataType = "", args = "", keywordType = "", varName = "", varData = "";
+            string keyword = "", dataType = "", args = "", keywordType, varName = "", varData = "";
             var spaceSplit = command.Split(' ');
             var equalSplit = command.Split('=');
             if (spaceSplit.Length <= 2)
@@ -136,11 +139,58 @@ namespace ComingoftheHybrid
                     case "show":
                         Show(args);
                         break;
-                    case "exit": return;
+                    case "exit": if (_autocacheclean) CacheCleaner(); return;
                     default:
                         ExceptionHandler("InvalidKeyword");
                         break;
+                    case "script":
+                        if (args.Contains("{")) _ispath = false;
+                        else _ispath = true;
+                        var lang = args.Replace(command.Split('{', '}')[1], "").Replace("}", "").Replace("{", "");
+                        try
+                        {
+                            ScriptRunner(lang, command.Split('{', '}')[1]);
+                        }
+                        catch (Exception)
+                        {
+                            ExceptionHandler("NoScriptProvided");
+                        }
+
+                        break;
+                    case "read":
+                        try
+                        {
+                            Strings[args] = Console.ReadLine();
+                        }
+                        catch (Exception)
+                        {
+                            // ignored
+                        }
+
+                        try
+                        {
+                            Ints[args] = Console.Read();
+                        }
+                        catch (Exception)
+                        {
+                            // ignored
+                        }
+
+                        try
+                        {
+                            Decimals[args] = decimal.Parse(Console.ReadLine());
+                        }
+                        catch (Exception)
+                        {
+                            ExceptionHandler("varNotInitialised");
+                        }
+
+                        break;
+                    case "clean":
+                        CacheCleaner();
+                        break;
                 }
+
             else
                 switch (dataType)
                 {
@@ -174,7 +224,7 @@ namespace ComingoftheHybrid
             switch (var)
             {
                 case "passiveexceptions":
-                    _allowPassiveExceptionHandling = val.Equals(true);
+                    _allowPassiveExceptionHandling = bool.Parse(val);
                     break;
                 default:
                     ExceptionHandler("LCVDoesNotExist");
@@ -194,5 +244,55 @@ namespace ComingoftheHybrid
                     break;
             }
         }
+
+        private static void ScriptRunner(string lang, string script)
+        {
+            Start.Runner(lang, script);
+        }
+
+        private static void CsharpCodeRunner(string execute)
+        {
+            //new Evaluator(new CompilerContext(new CompilerSettings(), new ConsoleReportPrinter())).Run(execute);
+        }
+
+        private static void PreFlightChecks()//Loads global langauge settings into memory
+        //ToDo: Add integrity checks for all executables
+        {
+            if (!File.Exists(@"config.ini"))
+            {
+                Console.WriteLine("config.ini missing");
+            }
+            else
+            {
+                using (var file = new StreamReader(@"config.ini"))
+                {
+                    string line=file.ReadLine();
+                    while(line != null)
+                    {line = file.ReadLine();
+                        switch (line)
+                        {
+                            case "autocleancache":
+                                if (line.Contains("true"))
+                                {
+                                    _autocacheclean = true;
+                                }
+                                break;
+                            default:
+                                break;
+                        }
+                        
+                    }
+                    
+                }
+            }
+        }
+
+        private static void CacheCleaner()
+        {
+            if (File.Exists(@"cacherun.py")) File.Delete(@"cacherun.py");
+            //ToDo: Add cleanup for all supported languages
+        }
     }
+    
+    
 }

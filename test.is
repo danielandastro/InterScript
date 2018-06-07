@@ -1,2 +1,3 @@
-string dog = test test 1
-retrieve string dog
+set passiveexceptions = false
+string test = hello world!
+retrieve test
