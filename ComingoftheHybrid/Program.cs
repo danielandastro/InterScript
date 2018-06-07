@@ -247,7 +247,7 @@ namespace ComingoftheHybrid
 
         private static void ScriptRunner(string lang, string script)
         {
-            Start.Runner(lang, script, _ispath);
+            Start.Runner(lang, script);
         }
 
         private static void CsharpCodeRunner(string execute)

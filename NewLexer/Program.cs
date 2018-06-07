@@ -3,6 +3,8 @@
  * DO NOT TRY IT
  * TODO MAKE IT WORK
  * CURRENTLY DOES NOT WORK
+ * Edit: after my whole rant, this should function as well as the old one, with better performance
+ * Now it has all the functionality
  */
 using System;
 using System.Collections.Generic;
@@ -22,12 +24,45 @@ namespace NewLexer
         private static string _allException, _newException;
         private static bool _allowPassiveExceptionHandling = true; //whether to display exception or just store it
         private static bool _autocacheclean = true;
-        private static bool _ispath = true;
 
         [STAThread]
         public static void Main(string[] args)
         {
-            Lexer(Console.ReadLine());
+            PreFlightChecks(); // Runs all the pre loading 
+            //Handling file interpreting and main interfacing
+            Console.WriteLine("Welcome to InterScript");
+            Console.Write("Open file? ");
+            var open = Console.ReadLine();
+            if (open != null && (open.Equals("y") || open.Equals("yes") || open.Equals("true")))
+            {
+                //Console.Write("Path to .IS file: ");
+                string path;
+                using (var fd = new OpenFileDialog())
+                {
+                    fd.ShowDialog();
+                    path = fd.FileName;
+                }
+
+                using (var file = new StreamReader(path))
+                {
+                    var line = file.ReadLine();
+                    while (line != null)
+                    {
+                        line = file.ReadLine();
+                        Lexer(line);
+                    }
+                    if (_autocacheclean) CacheCleaner();
+                }
+            }
+
+            //Standard interpreter CLI
+            
+            while (true)
+            {
+                Console.Write(">");
+                var hold = Console.ReadLine();
+                Lexer(hold);
+            }
         }
 
         private static void Lexer(string command)
@@ -35,11 +70,13 @@ namespace NewLexer
             var _Assignment = false;
             var spaceSplit = command.Split(' ');
             var equalSplit = command.Split('=');
-            var keyword = spaceSplit[0];
-            var args = spaceSplit[1];
+            var keyword = "";
+            var args = "";
             var assignment = "";
             try
             {
+                args = spaceSplit[1];
+                keyword = spaceSplit[0];
                 assignment = equalSplit[1];
             }
             catch (Exception)
@@ -98,9 +135,6 @@ namespace NewLexer
                 case "exit":
                     if (_autocacheclean) CacheCleaner();
                     return;
-                default:
-                    ExceptionHandler("InvalidKeyword");
-                    break;
                 case "read":
                     try
                     {
@@ -132,6 +166,34 @@ namespace NewLexer
                     break;
                 case "clean":
                     CacheCleaner();
+                    break;
+                case "string":
+                    Strings[args] = assignment;
+                    break;
+                case "int":
+                    try {Ints[args] = int.Parse(assignment);}
+                    catch(Exception){ExceptionHandler("InvalidDeclaration");}
+                    break;
+                case "decimal":
+                    try{Decimals[args] = decimal.Parse(assignment);}
+                    catch(Exception){ExceptionHandler("InvalidDeclaration");}
+                    break;
+                case "set":
+                    try{SetLcv(args, assignment);}
+                    catch(Exception){ExceptionHandler("InvalidDeclaration");}
+                    break;
+                case "script":
+                    try
+                    {
+                        Start.Runner(args, spaceSplit[2]);
+                    }
+                    catch (Exception)
+                    {
+                        ExceptionHandler("NoPathProvided");
+                    }
+                    break;
+                default:
+                    ExceptionHandler("InvalidKeyword");
                     break;
             }
         }
@@ -176,12 +238,6 @@ namespace NewLexer
                     break;
             }
         }
-
-        private static void ScriptRunner(string lang, string script)
-        {
-            Start.Runner(lang, script, _ispath);
-        }
-
         private static void CsharpCodeRunner(string execute)
         {
             //new Evaluator(new CompilerContext(new CompilerSettings(), new ConsoleReportPrinter())).Run(execute);
