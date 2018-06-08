@@ -6,12 +6,12 @@
  * Edit: after my whole rant, this should function as well as the old one, with better performance
  * Now it has all the functionality
  */
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Windows.Forms;
 using System.IO;
-using System.Text;
+using System.Windows.Forms;
 using ISAExternalHandler;
 
 namespace NewLexer
@@ -51,12 +51,13 @@ namespace NewLexer
                         line = file.ReadLine();
                         Lexer(line);
                     }
+
                     if (_autocacheclean) CacheCleaner();
                 }
             }
 
             //Standard interpreter CLI
-            
+
             while (true)
             {
                 Console.Write(">");
@@ -67,12 +68,14 @@ namespace NewLexer
 
         private static void Lexer(string command)
         {
-            var _Assignment = false;
+            var _Assignment = false; //Can be removed, not used currently
             var spaceSplit = command.Split(' ');
             var equalSplit = command.Split('=');
             var keyword = "";
             var args = "";
             var assignment = "";
+            //The following Try block contains the entire lexer, it is a very simple lexer that is completely generalised, with no
+            //keyword recognition etc.
             try
             {
                 args = spaceSplit[1];
@@ -81,7 +84,9 @@ namespace NewLexer
             }
             catch (Exception)
             {
-            }
+                /*This is only here to remove the error*/
+            } //Yes this supressant catch block is intentional
+
             if (assignment != null)
             {
                 _Assignment = true;
@@ -171,16 +176,37 @@ namespace NewLexer
                     Strings[args] = assignment;
                     break;
                 case "int":
-                    try {Ints[args] = int.Parse(assignment);}
-                    catch(Exception){ExceptionHandler("InvalidDeclaration");}
+                    try
+                    {
+                        Ints[args] = int.Parse(assignment);
+                    }
+                    catch (Exception)
+                    {
+                        ExceptionHandler("InvalidDeclaration");
+                    }
+
                     break;
                 case "decimal":
-                    try{Decimals[args] = decimal.Parse(assignment);}
-                    catch(Exception){ExceptionHandler("InvalidDeclaration");}
+                    try
+                    {
+                        Decimals[args] = decimal.Parse(assignment);
+                    }
+                    catch (Exception)
+                    {
+                        ExceptionHandler("InvalidDeclaration");
+                    }
+
                     break;
                 case "set":
-                    try{SetLcv(args, assignment);}
-                    catch(Exception){ExceptionHandler("InvalidDeclaration");}
+                    try
+                    {
+                        SetLcv(args, assignment);
+                    }
+                    catch (Exception)
+                    {
+                        ExceptionHandler("InvalidDeclaration");
+                    }
+
                     break;
                 case "script":
                     try
@@ -191,6 +217,7 @@ namespace NewLexer
                     {
                         ExceptionHandler("NoPathProvided");
                     }
+
                     break;
                 default:
                     ExceptionHandler("InvalidKeyword");
@@ -238,11 +265,13 @@ namespace NewLexer
                     break;
             }
         }
+
         private static void CsharpCodeRunner(string execute)
         {
             //new Evaluator(new CompilerContext(new CompilerSettings(), new ConsoleReportPrinter())).Run(execute);
             // that will execute the c# script code (when I sort out the MonoCompiler Service)
         }
+
         private static void CacheCleaner()
         {
             if (File.Exists(@"cacherun.py")) File.Delete(@"cacherun.py");
@@ -260,7 +289,7 @@ namespace NewLexer
             {
                 using (var file = new StreamReader(@"config.ini"))
                 {
-                    string line = file.ReadLine();
+                    var line = file.ReadLine();
                     while (line != null)
                     {
                         line = file.ReadLine();
@@ -276,12 +305,9 @@ namespace NewLexer
                             default:
                                 break;
                         }
-
                     }
-
                 }
             }
         }
     }
-
 }
