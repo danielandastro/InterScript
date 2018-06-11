@@ -263,6 +263,10 @@ namespace NewLexer
                 case "allexceptions":
                     Console.WriteLine(_allException);
                     break;
+                    case "datetime": Console.WriteLine((DateTime.Now.ToString()));
+                        break;
+                    case "time": Console.WriteLine(DateTime.Now.ToString("h:mm:ss tt"));
+                        break;
             }
         }
 
