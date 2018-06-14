@@ -49,7 +49,15 @@ namespace NewLexer
                     while (line != null)
                     {
                         line = file.ReadLine();
-                        Lexer(line);
+                        if (line.Contains("//"))//Removes comment from line before execution
+                        {
+                            var temp = line.Replace("//", "^");
+                            var temp2 = temp.Split('^')[1];
+                            var temp3 = line.Replace(temp2, "");
+                            temp3 = temp3.Replace("^", "");
+                            Lexer(temp3);
+                        }
+                        else {Lexer(line);}
                     }
 
                     if (_autocacheclean) CacheCleaner();
@@ -278,7 +286,7 @@ namespace NewLexer
 
         private static void CacheCleaner()
         {
-            if (File.Exists(@"cacherun.py")) File.Delete(@"cacherun.py");
+            if (File.Exists(@"cacherun.py")) File.Delete(@"cacherun.py");//This is unrequired after the rework of the ISA handler
             //ToDo: Add cleanup for all supported languages
         }
 
@@ -307,6 +315,7 @@ namespace NewLexer
 
                                 break;
                             default:
+                                
                                 break;
                         }
                     }
